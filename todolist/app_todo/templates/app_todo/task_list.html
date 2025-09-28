@@ -1,21 +1,38 @@
+{% load static %}
+
+{% include 'app_todo/dashboard_sidebar.html' %}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 <!DOCTYPE html>
-<html>
+<html lang="fa">
 <head>
+    <meta charset="UTF-8">
     <title>لیست کارها</title>
+    <!-- توصیه: اگر فایل bootstrap را دانلود کردی، static استفاده کن -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>لیست کارها</h1>
-    <a href="{% url 'task_create' %}">افزودن کار جدید</a>
-    <ul>
-    {% for task in tasks %}
-        <li>
-            {{ task.title }} {% if task.completed %}(انجام شده){% endif %}
-            <a href="{% url 'task_update' task.pk %}">ویرایش</a>
-            <a href="{% url 'task_delete' task.pk %}">حذف</a>
-        </li>
-    {% empty %}
-        <li>هیچ کاری ثبت نشده است.</li>
-    {% endfor %}
-    </ul>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4">لیست کارها</h1>
+        <a href="{% url 'task_create' %}" class="btn btn-primary mb-3">افزودن کار جدید</a>
+        <ul class="list-group">
+            {% for task in tasks %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                        {{ task.title }}
+                        {% if task.completed %}
+                            <span class="badge bg-success ms-2">انجام شده</span>
+                        {% endif %}
+                    </span>
+                    <span>
+                        <a href="{% url 'task_update' task.pk %}" class="btn btn-sm btn-warning">ویرایش</a>
+                        <a href="{% url 'task_delete' task.pk %}" class="btn btn-sm btn-danger">حذف</a>
+                    </span>
+                </li>
+            {% empty %}
+                <li class="list-group-item">هیچ کاری ثبت نشده است.</li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
