@@ -56,3 +56,10 @@ def task_delete(request, pk):
         task.delete()
         return redirect('task_list')
     return render(request, 'app_todo/task_confirm_delete.html', {'task': task})
+
+
+def task_complete(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.completed = True
+    task.save()
+    return redirect('task_list')
