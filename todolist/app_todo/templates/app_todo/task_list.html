@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>لیست کارها</title>
+</head>
+<body>
+    <h1>لیست کارها</h1>
+    <a href="{% url 'task_create' %}">افزودن کار جدید</a>
+    <ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.title }} {% if task.completed %}(انجام شده){% endif %}
+            <a href="{% url 'task_update' task.pk %}">ویرایش</a>
+            <a href="{% url 'task_delete' task.pk %}">حذف</a>
+        </li>
+    {% empty %}
+        <li>هیچ کاری ثبت نشده است.</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

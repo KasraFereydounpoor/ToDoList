@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ثبت یا ویرایش کار</title>
+</head>
+<body>
+    <h1>فرم کار جدید یا ویرایش</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="ذخیره"/>
+    </form>
+    <a href="{% url 'task_list' %}">بازگشت به لیست کارها</a>
+</body>
+</html>

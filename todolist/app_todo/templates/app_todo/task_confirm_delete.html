@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>حذف کار</title>
+</head>
+<body>
+    <h1>آیا مطمئن هستی که می‌خواهی "{{ task.title }}" را حذف کنی؟</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="حذف کن"/>
+    </form>
+    <a href="{% url 'task_list' %}">بازگشت</a>
+</body>
+</html>
