@@ -25,6 +25,7 @@ def task_list(request):
         'today_uncompleted': uncompleted_today,
         'today_total': all_today,
         'percent_today': percent_today,
+        'show_dashboard': True,
     }
     return render(request, 'app_todo/task_list.html', context)
 
