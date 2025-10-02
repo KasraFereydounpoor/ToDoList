@@ -9,15 +9,25 @@ from django.utils import timezone
 from django.utils import timezone
 
 def task_list(request):
-    tasks = Task.objects.all().order_by('-created_date')
-
+    search_query = request.GET.get('search', '')
+    order_mode = request.GET.get('order', '')
+    
+    tasks = Task.objects.all()
+    if search_query:
+        tasks = tasks.filter(title__icontains=search_query)
+    if order_mode == "completed":
+        tasks = tasks.order_by('-completed', '-created_date')
+    elif order_mode == "not_completed":
+        tasks = tasks.order_by('completed', '-created_date')
+    else:
+        tasks = tasks.order_by('-created_date')  # فقط یک بار این خط
+    
     today = timezone.now().date()
     today_tasks = Task.objects.filter(created_date__date=today)
     completed_today = today_tasks.filter(completed=True).count()
     uncompleted_today = today_tasks.filter(completed=False).count()
     all_today = today_tasks.count()
     percent_today = int((completed_today / all_today) * 100) if all_today > 0 else 0
-
 
     context = {
         'tasks': tasks,

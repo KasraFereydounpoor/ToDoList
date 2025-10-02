@@ -11,28 +11,22 @@
 
 {% block content %}
 
+    <!-- فرم سرچ و فیلتر -->
+<form method="get" class="d-flex flex-wrap align-items-center justify-content-center mb-4 gap-2">
+    <input type="text" name="search" class="form-control w-50" placeholder="جستجو عنوان" value="{{ request.GET.search }}">
+    <select name="order" class="form-select w-30">
+        <option  value="">ترتیب پیش‌فرض</option>
+        <option value="completed">انجام‌شده اول</option>
+        <option value="not_completed">انجام‌نشده اول</option>
+    </select>
+    <button class="btn btn-info w-50" type="submit">اعمال</button>
+</form>
 
     <h1 class="mb-4 text-center">لیست کارها</h1>
     <a href="{% url 'task_create' %}" class="btn btn-primary mb-3 mx-auto d-block" style="width:180px;">افزودن کار جدید</a>
     <ul class="list-group w-75 mx-auto text-center">
         {% for task in tasks %}
-            <li class="list-group-item d-flex justify-content-center align-items-center">
-                <span class="flex-grow-1 text-center">
-                    {{ task.title }}
-                    {% if task.completed %}
-                        <span class="badge bg-success ms-2">انجام شده</span>
-                    {% endif %}
-                </span>
-                {% if not task.completed %}
-                    <a href="{% url 'task_complete' task.pk %}" class="btn btn-success btn-sm ms-2">تکمیل</a>
-                {% else %}
-                    <a href="{% url 'task_uncomplete' task.pk %}" class="btn btn-secondary btn-sm ms-2">غیرفعال کردن</a>
-                {% endif %}
-                <a href="{% url 'task_update' task.pk %}" class="btn btn-warning btn-sm ms-2">ویرایش</a>
-                <a href="{% url 'task_delete' task.pk %}" class="btn btn-danger btn-sm ms-2">حذف</a>
-            </li>
-        {% empty %}
-            <li class="list-group-item text-center">هیچ کاری ثبت نشده است.</li>
+            <!-- ... بقیه لیست ... -->
         {% endfor %}
     </ul>
 {% endblock %}
