@@ -9,8 +9,13 @@ from django.utils import timezone
 from django.utils import timezone
 
 def task_list(request):
+    
     search_query = request.GET.get('search', '')
     order_mode = request.GET.get('order', '')
+    
+    
+    print(f"search_query: {search_query}, order_mode: {order_mode}")
+    tasks = Task.objects.all()
     
     tasks = Task.objects.all()
     if search_query:
