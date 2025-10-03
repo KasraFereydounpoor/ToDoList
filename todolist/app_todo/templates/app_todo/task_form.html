@@ -1,31 +1,76 @@
 {% extends 'app_todo/base.html' %}
+{% load widget_tweaks %}
 
 {% include 'app_todo/dashboard_sidebar.html' %}
-
 {% load static %}
+
 {% block title %}افزودن/ویرایش کار{% endblock %}
 
 {% block content %}
 <style>
-  body, html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
+    body, html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .task-form-label {
+        font-weight: bold;
+        color: #5452d7;
+        margin-bottom: 8px;
+    }
+    .card-custom {
+        min-width:340px;
+        max-width:420px;
+        background: linear-gradient(135deg, #ece9ff 0%, #e7ffee 100%);
+        border: none;
+        box-shadow: 0 4px 16px rgba(84, 82, 215, 0.12);
+    }
+    .form-control:focus {
+        border-color: #45c292;
+        box-shadow: 0 2px 8px #45c29233;
+    }
+    .btn-custom {
+        border:none;
+        box-shadow: 0 2px 8px #5452d744;
+    }
 </style>
 <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
-  <div class="card rounded-4 p-4 shadow-lg" style="min-width:340px; max-width:420px; background: linear-gradient(135deg, #ece9ff 0%, #e7ffee 100%); border: none;">
-      <h2 class="mb-4 text-center" style="color:#5452d7;">افزودن / ویرایش کار</h2>
-      <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <div class="d-flex justify-content-between mt-3">
-              <button type="submit" class="btn btn-success px-4 rounded-3" style="background: #45c292; border:none;">ثبت</button>
-              <a href="{% url 'task_list' %}" class="btn btn-secondary px-4 rounded-3" style="background: #5452d7; border:none; color: #fff;">بازگشت</a>
-          </div>
-      </form>
-  </div>
+    <div class="card rounded-4 p-4 card-custom">
+        <h2 class="mb-4 text-center" style="color:#5452d7;">افزودن / ویرایش کار</h2>
+        <form method="post" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_title" class="task-form-label">عنوان کار</label>
+                {{ form.title|add_class:"form-control rounded shadow-sm" }}
+            </div>
+            <div class="mb-3">
+                <label for="id_description" class="task-form-label">توضیحات</label>
+                {{ form.description|add_class:"form-control rounded shadow-sm" }}
+            </div>
+            <div class="mb-3">
+                <label for="id_completed" class="task-form-label">انجام شده؟</label>
+                <div class="form-check ms-2">
+                    {{ form.completed|add_class:"form-check-input" }}
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="id_due_date" class="task-form-label">تاریخ سررسید</label>
+                {{ form.due_date|add_class:"form-control rounded shadow-sm" }}
+            </div>
+            <div class="mb-3">
+                <label for="id_attachment" class="task-form-label">
+                    ضمیمه فایل
+                    <i class="bi bi-paperclip"></i>
+                </label>
+                {{ form.attachment|add_class:"form-control" }}
+            </div>
+            <div class="d-flex justify-content-between mt-3">
+                <button type="submit" class="btn btn-success px-4 rounded-3 btn-custom" style="background: #45c292;">ثبت</button>
+                <a href="{% url 'task_list' %}" class="btn btn-secondary px-4 rounded-3 btn-custom" style="background: #5452d7; color: #fff;">بازگشت</a>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}
-
+<script src="{% static 'js/darkmode.js' %}"></script>

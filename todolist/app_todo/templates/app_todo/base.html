@@ -16,6 +16,7 @@
     </style>
 </head>
 <body>
+
     <div style="min-height: 100vh; display: flex; flex-direction: row; justify-content: center; align-items: flex-start; padding: 20px;">
         {% if show_dashboard %}
             <div style="min-width:320px; margin-right: 28px;">
@@ -24,6 +25,18 @@
         {% endif %}
         <div style="flex:1; display: flex; justify-content: center; align-items: center;">
             <div style="width: 100%; max-width: 900px;">
+                <!-- در ابتدای base.html و قبل block content بذار -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">ToDoList</a>
+                <div class="d-flex align-items-center">
+                  <button id="darkModeToggle" class="btn btn-outline-dark ms-3">
+                    حالت شب/روز
+                  </button>
+                </div>
+              </div>
+            </nav>
+
                 {% block content %}
                 {% endblock %}
             </div>
@@ -31,3 +44,4 @@
     </div>
 </body>
 </html>
+<script src="{% static 'js/darkmode.js' %}"></script>
