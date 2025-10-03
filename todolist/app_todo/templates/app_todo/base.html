@@ -6,20 +6,26 @@
     <title>{% block title %}تودولیست{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-        body { background: #f8f9fa !important; }
+        body {
+            background: #f8f9fa !important;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, Geneva, Verdana, sans-serif;
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            {# فقط اگر show_dashboard به قالب ارسال شده بود، داشبورد سایدبار نمایش داده شود #}
-            {% if show_dashboard %}
-                <div class="col-lg-4 col-md-5 col-sm-12 d-flex align-items-start justify-content-center">
-                    {% include 'app_todo/dashboard_sidebar.html' %}
-                </div>
-            {% endif %}
-            <div class="col-lg-8 col-md-7 col-sm-12 d-flex flex-column align-items-center justify-content-center">
-                {% block content %}{% endblock %}
+    <div style="min-height: 100vh; display: flex; flex-direction: row; justify-content: center; align-items: flex-start; padding: 20px;">
+        {% if show_dashboard %}
+            <div style="min-width:320px; margin-right: 28px;">
+                {% include 'app_todo/dashboard_sidebar.html' %}
+            </div>
+        {% endif %}
+        <div style="flex:1; display: flex; justify-content: center; align-items: center;">
+            <div style="width: 100%; max-width: 900px;">
+                {% block content %}
+                {% endblock %}
             </div>
         </div>
     </div>

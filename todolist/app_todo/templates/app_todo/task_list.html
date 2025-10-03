@@ -24,9 +24,20 @@
 
     <h1 class="mb-4 text-center">لیست کارها</h1>
     <a href="{% url 'task_create' %}" class="btn btn-primary mb-3 mx-auto d-block" style="width:180px;">افزودن کار جدید</a>
-    <ul class="list-group w-75 mx-auto text-center">
-        {% for task in tasks %}
-            <!-- ... بقیه لیست ... -->
-        {% endfor %}
-    </ul>
+<ul class="list-group w-75 mx-auto text-center">
+  {% for task in tasks %}
+    <li class="list-group-item">
+      <div class="d-flex justify-content-between align-items-center">
+        <span>{{ task.title }}</span>
+        <div>
+          <a href="{% url 'task_update' task.id %}" class="btn btn-warning btn-sm mx-1">ویرایش</a>
+          <a href="{% url 'task_delete' task.id %}" class="btn btn-danger btn-sm">حذف</a>
+        </div>
+      </div>
+    </li>
+  {% empty %}
+    <li class="list-group-item">هیچ کاری ثبت نشده.</li>
+  {% endfor %}
+</ul>
+
 {% endblock %}
