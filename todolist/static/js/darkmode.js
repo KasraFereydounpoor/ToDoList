@@ -1,12 +1,16 @@
-document.addEventListener('DOMContentLoaded', function () {
-    var btn = document.getElementById('darkModeToggle');
+document.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+    }
+    const btn = document.getElementById("darkModeToggle");
     if (btn) {
-        btn.onclick = function () {
-            document.body.classList.toggle('dark-mode');
-            document.querySelectorAll('.card').forEach(e => e.classList.toggle('dark-mode'));
-            document.querySelectorAll('.form-control').forEach(e => e.classList.toggle('dark-mode'));
-            document.querySelectorAll('.btn').forEach(e => e.classList.toggle('dark-mode'));
-            document.querySelectorAll('.list-group-item').forEach(e => e.classList.toggle('dark-mode'));
-        };
+        btn.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+            if(document.body.classList.contains("dark-mode")){
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
     }
 });

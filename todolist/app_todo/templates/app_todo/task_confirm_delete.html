@@ -10,6 +10,7 @@
 
 {% block title %}حذف کار{% endblock %}
 {% block content %}
+<script src="{% static 'js/darkmode.js' %}"></script>
     <div class="card p-4 shadow" style="max-width:420px;margin:auto;">
         <h2 class="mb-4 text-center text-danger">حذف کار</h2>
         <p class="text-center">آیا مطمئن هستید که می‌خواهید کار "<span class="fw-bold">{{ task.title }}</span>" را حذف کنید؟</p>
@@ -20,4 +21,3 @@
         </form>
     </div>
 {% endblock %}
-<script src="{% static 'js/darkmode.js' %}"></script>

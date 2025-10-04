@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
+
+
     <meta charset="UTF-8">
     <title>{% block title %}تودولیست{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -25,17 +27,16 @@
         {% endif %}
         <div style="flex:1; display: flex; justify-content: center; align-items: center;">
             <div style="width: 100%; max-width: 900px;">
-                <!-- در ابتدای base.html و قبل block content بذار -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
               <div class="container-fluid">
                 <a class="navbar-brand" href="#">ToDoList</a>
                 <div class="d-flex align-items-center">
-                  <button id="darkModeToggle" class="btn btn-outline-dark ms-3">
-                    حالت شب/روز
-                  </button>
+                    <button type="button" id="darkModeToggle" class="btn btn-outline-dark">حالت شب/روز</button>
                 </div>
               </div>
             </nav>
+                <script src="{% static 'js/darkmode.js' %}"></script>
+
 
                 {% block content %}
                 {% endblock %}
@@ -44,4 +45,4 @@
     </div>
 </body>
 </html>
-<script src="{% static 'js/darkmode.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/darkmode.css' %}">

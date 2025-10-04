@@ -1,0 +1,102 @@
+body.dark-mode {
+  background-color: #212529 !important;
+  color: #fff !important;
+}
+
+body.dark-mode .card {
+  background-color: #383838 !important;
+  color: #fff !important;
+}
+
+body.dark-mode .btn {
+  background-color: #444 !important;
+  color: #fff !important;
+}
+
+body.dark-mode {
+  color: #fff !important;
+  font-family: Tahoma, Verdana, Arial, sans-serif !important;
+}
+body.dark-mode ::placeholder {
+  color: #bbb !important;
+  opacity: 1;
+}
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #23272b !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: #fff !important;
+}
+body.dark-mode .btn {
+  background-color: #343a40 !important;
+  color: #fff !important;
+  border-color: #444 !important;
+}
+body.dark-mode .btn-danger {
+  background-color: #bb2d3b !important;
+  color: #fff !important;
+}
+body.dark-mode .btn-warning {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+}
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background: #23272b !important;
+  color: #fff !important;
+  border-color: #666 !important;
+}
+
+body.dark-mode ::placeholder {
+  color: #e0e0e0 !important;
+}
+
+body.dark-mode label,
+body.dark-mode legend,
+body.dark-mode span,
+body.dark-mode p {
+  color: #d3d3d3 !important;
+}
+
+body.dark-mode .btn {
+  background-color: #383c41 !important;
+  color: #fff !important;
+  border-color: #444 !important;
+}
+
+body.dark-mode .card {
+  background: #363940 !important;
+  color: #fff !important;
+  border-color: #444 !important;
+}
+body.dark-mode .card,
+body.dark-mode .list-group-item,
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #27292f !important;
+  color: #fff !important;
+  border-color: #444 !important;
+}
+
+body.dark-mode .list-group-item {
+  background-color: #23242a !important;
+  color: #fff !important;
+}
+
+body.dark-mode .btn, body.dark-mode .btn:active {
+  background-color: #383c41 !important;
+  color: #fff !important;
+  border-color: #444 !important;
+}
